@@ -15,13 +15,13 @@
   // Flutter's TapRegion keeps framework focus during related memo controls.
   // With web semantics enabled, the browser also focuses their DOM buttons
   // on mousedown (including the mouse event synthesized after a touch).
-  // Cancel only that focus transfer: clicks, touch scrolling, Tab navigation
+  // Cancel that pointer focus transfer even when not editing: native focus
+  // can scroll the invisible semantics DOM separately from Flutter's canvas.
+  // Clicks, touch scrolling, Tab navigation
   // and screen-reader activation remain available. Never blur/refocus the
   // input, which would dismiss and reopen an iPhone's software keyboard.
   document.addEventListener('mousedown', (event) => {
-    const input = document.activeElement;
-    if (!(input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement)) return;
-    if (!input.closest('flutter-view')) return;
+    if (event.button !== 0) return;
     if (event.target instanceof Element &&
         event.target.closest('[flt-semantics-identifier="memo-editing-controls"]')) {
       event.preventDefault();
