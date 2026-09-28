@@ -22,28 +22,38 @@
     html, body { margin: 0; background: #faf7f0; color: #39352f; }
     #flutter_host { width: 100%; position: relative; overflow: clip; }
     #app-startup { position: fixed; inset: 0; z-index: 3; overflow: auto; background: #faf7f0; font-family: system-ui, sans-serif; }
-    .startup-content { box-sizing: border-box; max-width: 420px; margin: auto; padding: 15vh 24px 32px; text-align: center; line-height: 1.7; }
+    .startup-content { box-sizing: border-box; max-width: 440px; min-height: 100%; margin: auto; padding: max(32px, env(safe-area-inset-top)) 28px max(24px, env(safe-area-inset-bottom)); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; line-height: 1.7; }
+    .startup-mark { width: 116px; height: 116px; display: grid; place-items: center; border-radius: 36px; background: #fff; box-shadow: 0 10px 32px #79664a0b; margin-bottom: 14px; }
     .startup-content img { border-radius: 20px; }
-    .startup-content h1 { font-size: 28px; margin: 12px 0; }
+    .startup-content h1 { font-size: 29px; font-weight: 600; letter-spacing: .07em; margin: 10px 0 8px; }
     .startup-content p { margin: 12px 0; }
-    .startup-content a { color: #795e3c; text-underline-offset: 4px; display: inline-block; padding: 12px 4px; }
+    .startup-copy { font-size: 15px; line-height: 1.95; color: #81796d; }
+    .startup-dots { display: flex; gap: 7px; margin-top: 28px; }
+    .startup-dots span { width: 5px; height: 5px; background: #b9a17c; border-radius: 50%; animation: startup-pulse 1.5s ease-in-out infinite; }
+    .startup-dots span:nth-child(2) { animation-delay: .2s; }
+    .startup-dots span:nth-child(3) { animation-delay: .4s; }
+    #startup-status { font-size: 12px; color: #81796d; max-width: 310px; }
+    .startup-content a { color: #81796d; font-size: 12px; text-underline-offset: 4px; display: inline-block; padding: 12px 4px; }
     .startup-content button { font: inherit; border: 0; border-radius: 14px; padding: 12px 20px; background: #39352f; color: white; cursor: pointer; }
+    @keyframes startup-pulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .startup-dots span { animation: none; } }
     [hidden] { display: none !important; }
   </style>
 </head>
 <body>
   <div id="app-startup">
     <div class="startup-content">
-      <img src="icons/life-savings.svg" width="80" height="80" alt="">
+      <div class="startup-mark"><img src="icons/life-savings.svg" width="88" height="88" alt=""></div>
       <h1>人生貯金</h1>
-      <p>未来の自分へ、ひとつ。</p>
+      <p class="startup-copy">今日の行動を、コインに。<br>小さな一歩を、一枚ずつ。</p>
+      <div class="startup-dots" aria-hidden="true"><span></span><span></span><span></span></div>
       <p id="startup-status" role="status">読み込み中…</p>
       <button id="startup-retry" type="button" hidden>再読み込み</button>
       <p><a href="life-guide.html">使い方・データの保存について</a></p>
       <noscript><p>アプリを使うにはJavaScriptを有効にしてください。使い方の案内は上のリンクから確認できます。</p></noscript>
     </div>
   </div>
-  <div id="flutter_host"></div>
+  <div id="flutter_host" inert aria-hidden="true"></div>
   <script src="page_scroll.js"></script>
   <script src="app_startup.js"></script>
   <script src="life_audio.js"></script>
