@@ -1,0 +1,25 @@
+{
+  "name": "人生貯金",
+  "short_name": "人生貯金",
+  "lang": "ja",
+  "id": "./",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#faf7f0",
+  "theme_color": "#faf7f0",
+  "description": "日々の行動をコインにして貯め、一週間ごとに振り返る。",
+  "orientation": "any",
+  "prefer_related_applications": false,
+  "icons": [
+    { "src": "icons/life-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/life-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/life-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    {
+      "src": "icons/life-savings.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "scope": "./"
+}

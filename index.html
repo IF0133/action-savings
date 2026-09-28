@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <base href="/action-savings/">
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#faf7f0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="日々の行動をコインにして貯める、人生貯金。">
+  <meta property="og:title" content="人生貯金">
+  <meta property="og:description" content="日々の行動をコインにして貯め、一週間ごとに振り返る。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="人生貯金">
+  <link rel="icon" type="image/svg+xml" href="icons/life-savings.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/life-180.png">
+  <link rel="manifest" href="manifest.json">
+  <title>人生貯金</title>
+  <style>
+    html, body { margin: 0; background: #faf7f0; color: #39352f; }
+    #flutter_host { width: 100%; position: relative; overflow: clip; }
+    #app-startup { position: fixed; inset: 0; z-index: 3; overflow: auto; background: #faf7f0; font-family: system-ui, sans-serif; }
+    .startup-content { box-sizing: border-box; max-width: 420px; margin: auto; padding: 15vh 24px 32px; text-align: center; line-height: 1.7; }
+    .startup-content img { border-radius: 20px; }
+    .startup-content h1 { font-size: 28px; margin: 12px 0; }
+    .startup-content p { margin: 12px 0; }
+    .startup-content a { color: #795e3c; text-underline-offset: 4px; display: inline-block; padding: 12px 4px; }
+    .startup-content button { font: inherit; border: 0; border-radius: 14px; padding: 12px 20px; background: #39352f; color: white; cursor: pointer; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <div id="app-startup">
+    <div class="startup-content">
+      <img src="icons/life-savings.svg" width="80" height="80" alt="">
+      <h1>人生貯金</h1>
+      <p>未来の自分へ、ひとつ。</p>
+      <p id="startup-status" role="status">読み込み中…</p>
+      <button id="startup-retry" type="button" hidden>再読み込み</button>
+      <p><a href="life-guide.html">使い方・データの保存について</a></p>
+      <noscript><p>アプリを使うにはJavaScriptを有効にしてください。使い方の案内は上のリンクから確認できます。</p></noscript>
+    </div>
+  </div>
+  <div id="flutter_host"></div>
+  <script src="page_scroll.js"></script>
+  <script src="app_startup.js"></script>
+  <script src="life_audio.js"></script>
+  <script id="flutter-bootstrap" src="flutter_bootstrap.js" async></script>
+</body>
+</html>
